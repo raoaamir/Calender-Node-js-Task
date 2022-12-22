@@ -1,0 +1,38 @@
+<%- include('partials/header'); -%>
+<div class="create-blog content">
+    <form>
+      <label for="EventName">Event Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="location">Location:</label>
+      <input type="text"  id="owner" name="owner" value="<%=user._id%>">
+      <input type="text" id="loc" name="loc" required>
+      
+   
+      <button>Submit</button>
+    </form>
+  </div>
+  <script>
+    const form = document.querySelector('form')
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault()
+      const name = form.name.value
+      const loc = form.loc.value
+      const owner = form.owner.value
+    
+    
+    try {
+            const result = await fetch('/postAllday', {
+               
+                method: 'POST',
+                body: JSON.stringify({name, loc , owner}),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            window.location.href = '/'
+          }catch(e){
+            console.log(e)
+          }
+
+        })
+  </script>
+
+  <%- include('partials/footer'); -%>

@@ -1,0 +1,343 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+body{
+  margin: 20px 40px;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  background: #fafafa;
+}
+h1, h2, h3, h4, ul, li, a, p, input, label, button, div, footer{
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  color: #444;
+}
+ul{
+  list-style-type: none;
+}
+a{
+  text-decoration: none;
+}
+/* nav & footer styles */
+nav{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  /* text-transform: lowercase; */
+  background-color: black;
+}
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+nav li{
+  list-style-type: none;
+  margin-left: 20px;
+  color: white;
+}
+/* nav h3{
+  font-size: 1rem;
+} */
+ nav a{
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+.btn{
+  border-radius: 36px;
+  padding: 4px;
+  background: yellow;
+}
+
+.headings{
+  background-color: black;
+  border-radius: 10px;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  top: 18rem;
+  left: 17rem;
+  width: 50rem;
+}
+
+.headings >h2{
+  color: white;
+}
+.headings >h3{
+  color: white;
+}
+
+.home img{
+  width: 100%;
+  height: 100%;
+}
+
+.smoothie{
+  display: flex;
+  position: absolute;
+  top: 17rem;
+  left: 13rem;
+}
+form h2{
+  font-size: 2.4em;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+form{
+  width: 360px;
+  margin: 0 auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  background: white;
+}
+input{
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+  width: 100%;
+}
+label{
+  display: block;
+  margin: 20px 0 10px;
+}
+#owner{
+  display: none;
+}
+button{
+  margin-top: 30px;
+  border-radius: 36px;
+  background: #FEE996;
+  border:0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8em;
+  display: block;
+  padding: 10px 16px;
+  letter-spacing: 2px;
+}
+.error{
+  color: #ff0099;
+  margin: 10px 2px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+header{
+  display: flex;
+  align-items: center;
+}
+header img{
+  width: 250px;
+  margin-right: 40px;
+}
+header h2{
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+header h3{
+  font-size: 1.6em;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  color: #999;
+}
+header .btn{
+  margin-top: 20px;
+  padding: 12px 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 0.8em;
+}
+
+footer{
+  display: flex;
+  position: absolute;
+  top: 38rem;
+  left: 31rem;
+  color: #aaa; 
+
+  /* text-align: center;
+  margin-top: 17rem;
+  color: #aaa; */
+}
+*{
+  margin: 0;
+  padding: 0;
+  
+  }
+  
+  .calendar-container{
+      margin: auto;
+      background-color:white;
+      width:90%;
+      border-top:10px solid green;
+      border-bottom:10px solid green;
+      box-shadow: 0px 10px 10px 10px ;
+  }
+  #head{
+      display: flex;
+      background-color: white;
+      justify-content: flex-end;
+      align-items: center;
+      min-height: 60px;
+      border-bottom: 1px solid gray;
+  }
+  #head h5{
+      padding: 0px 20px;
+  }
+  
+  #outer{
+  
+      display: flex;
+      flex-direction: column;
+      background-color:lightgray;
+      min-height: 40px;
+      justify-content: flex-end;
+      align-items: flex-end;
+  
+      
+  }
+  .inner p{
+      padding: 0px 20px;
+     
+  }
+  .inner{
+      display: flex;
+      background-color: white;
+      align-items: center;
+      min-height: 40px;
+      width: 75.9%;
+      border-left: 10px solid rgb(0, 191, 0);
+   
+    
+  }
+  .Am_container{
+      background-color: rgb(252, 237, 239);
+      height: 193;
+      z-index: 0;
+      
+  }
+  .am{
+      display: flex;
+      border-top: 1px solid rgb(248, 100, 125);   
+  }
+  .am h1{
+      padding: 20px 20px;
+      color: rgb(248, 100, 125);
+  }
+  .pm{
+      display: flex;
+      border-top: 1px solid rgb(101, 196, 228);
+  }
+  .pm h1{
+      padding: 20px 20px;
+      color: rgb(101, 196, 228);
+  }
+  .timecontainer{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      
+  
+  }
+  .timeslothalf{
+      min-height: 30px;
+      border-top: 1px solid gray;
+      width: 90%; 
+  }
+  .timeslotfull{
+      display: flex;
+      justify-content: flex-start;
+      height: 30px;
+      border-top: 1px solid gray;
+      width: 95%;
+  }
+  .slot{
+      display: flex;
+      justify-content: flex-start;
+      height: 30px;
+      width: 95%;
+  }
+  
+  .Pm_container{
+      background-color: rgb(226, 236, 240);
+      height: 70%;
+  }
+  
+  .event{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border-left: 10px solid rgb(0, 191, 0);
+       margin-left: 4rem;
+      justify-content: center; 
+      align-items: center; 
+      width: auto;
+      z-index: 1;  
+  }
+  
+  .create-blog form{
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .create-blog input,
+    .create-blog textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .create-blog label{
+      display: block;
+      margin-top: 24px;
+    }
+    /* textarea{
+      height: 120px;
+    } */
+    .create-blog button{
+      margin-top: 20px;
+      background: crimson;
+      color: white;
+      padding: 6px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+
+    .site-title{
+      background-color: black;
+      height: 3rem;
+      border-bottom: 10px solid yellow;
+      border-radius: 10px;
+      padding: 4px 4px;
+      margin-left: 1rem;
+    }
+    .site-title h3{
+      color: white;
+    }
+    .site-title p{
+      color: red;
+    }
+
+    #sTime{
+      width: 5rem;
+      height: 1.5rem;
+      border-radius: 10%;
+    }
+    #eTime{
+      width: 5rem;
+      height: 1.5rem;
+      border-radius: 10%;
+    }
+  
