@@ -1,10 +1,10 @@
 const allday = require('../models/allday')
 
-module.exports.calender_All_Day = (req ,res)=>{
+const allday_view = (req ,res)=>{
     res.render ('allDayEvent')
 }
 
-module.exports.calender_All_Day_post=(req ,res)=>{
+const create_event=(req ,res)=>{
     const alldays = new allday(req.body)
 
     alldays.save()
@@ -17,7 +17,7 @@ module.exports.calender_All_Day_post=(req ,res)=>{
 
 }
 
-module.exports.send_all_day_Events = async(req ,res)=>{
+const send_all_day_Events = async(req ,res)=>{
 
     // const alldays = await allday.find()
     allday.find({owner:req.user._id}).then((result)=>{
@@ -26,13 +26,13 @@ module.exports.send_all_day_Events = async(req ,res)=>{
 
 
 }
-module.exports.allday_edit = async (req ,res)=>{
+const edit_event = async (req ,res)=>{
     const data = await allday.findById(req.params.id)
     if(!data)return res.send("EVENT NOT FOUND")
     res.render('alldayedit' , {allday : data})
 }
 
-module.exports.allday_update = async (req , res)=>{
+const update_event = async (req , res)=>{
     try {
           const id  = req.params.id
           const result = await allday.findByIdAndUpdate(id ,{
@@ -49,10 +49,20 @@ module.exports.allday_update = async (req , res)=>{
 
 }
 
-module.exports.delete_dayEvent = (req ,res)=>{
+const delete_event = (req ,res)=>{
     const id = req.params.id
     allday.findByIdAndDelete(id)
     .then(result=>{
         res.redirect('/calender')
     })
+}
+
+module.exports ={
+    allday_view,
+    create_event,
+    send_all_day_Events,
+    edit_event,
+    update_event,
+    delete_event
+
 }

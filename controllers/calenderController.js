@@ -1,14 +1,14 @@
 const Calender = require('../models/calender')
 
-module.exports.calender_get = (req, res) => {
+const calender = (req, res) => {
     res.render('index1');
   }
 
-  module.exports.calender_create_get = (req ,res)=>{
+  const calender_create = (req ,res)=>{
     res.render('create');
     }
 
-  module.exports.calender_create_post = (req ,res)=>{  
+  const create_event = (req ,res)=>{  
     const calenders = new Calender(req.body)
    
         
@@ -21,7 +21,7 @@ module.exports.calender_get = (req, res) => {
         })
     }
 
-    module.exports.send_all_events =async (req ,res)=>{
+    const send_all_events =async (req ,res)=>{
        
         Calender.find({owner : req.user._id}).sort({createdAt:-1}).then((result)=>{
             res.status(201).json(result)
@@ -30,7 +30,7 @@ module.exports.calender_get = (req, res) => {
         
     }
 
-    module.exports.Calender_edit =async (req ,res)=>{
+    const calender_edit =async (req ,res)=>{
        const data= await Calender.findById(req.params.id)
         if(!data)return res.send("EVENT NOT FOUND")
        
@@ -38,7 +38,7 @@ module.exports.calender_get = (req, res) => {
       
     } 
 
-    module.exports.calender_update_Put = async (req ,res)=>{
+    const calender_update = async (req ,res)=>{
         try {
            const id  = req.params.id
            const result = await Calender.findByIdAndUpdate(id ,{
@@ -57,11 +57,23 @@ module.exports.calender_get = (req, res) => {
         
        }
 
-    module.exports.delete_get = async (req , res)=>{
+    const delete_event = async (req , res)=>{
             const id = req.params.id
             Calender.findByIdAndDelete(id)
             .then(result =>{
                 res.redirect('/calender')
             })
         
+    }
+
+
+    module.exports ={
+        calender,
+        calender_create,
+        create_event,
+        send_all_events,
+        calender_edit,
+        calender_update,
+        delete_event
+
     }

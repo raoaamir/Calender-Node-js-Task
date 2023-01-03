@@ -1,52 +1,22 @@
 const User = require('../models/user.js')
 const jwt = require('jsonwebtoken')
 
-const handlingError = (err)=>{
-    console.log(err.message , err.code)
-    let errors = {email : '' , password : ''}
-
-    if(err.message === 'Incorrect Email'){
-        errors.email = 'This email is not registered'
-    }
-
-    if(err.message === 'Incorrect Password'){
-        errors.email = 'This password is not correct'
-    }
-    
-
-    //Dublicate Error
-
-    if(err.code === 11000){
-        errors.email = ('Email is Already Exist')
-        return errors
-    }
-
-    //validation error
-
-    if(err.message.includes('user validation failed')){
-        Object.values(err.errors).forEach(({properties})=>{
-            errors[properties.path] = properties.message
-        })
-    }
-    return errors;
-}
-
 const maxAge = 3 * 24 * 60 * 60
 const createToken = (id) =>{
-    return jwt.sign({id} , 'this is my secret key ' ,{
+    return jwt.sign({id} ,process.env.SECRETKEY ,{
         expiresIn :maxAge
     } )
 }
 // controller actions
-module.exports.signup_get = (req, res) => {
+const signup = (req, res) => {
     res.render('signup');
   }
   
-  module.exports.login_get = (req, res) => {
+  const login = (req, res) => {
     res.render('login');
   }
   
-  module.exports.signup_post = async(req, res) => {
+  const create_user = async(req, res) => {
     const {email ,password} = req.body;
     try {
         const user = await User.create({email ,password})
@@ -55,13 +25,13 @@ module.exports.signup_get = (req, res) => {
         res.status(201).json({user : user._id})
         
     } catch (err) {
-        const errors = handlingError(err)
+        const errors = err.message
         res.status(400).json({errors})
         
     }
   }
   
-  module.exports.login_post = async (req, res) => {
+  const login_user = async (req, res) => {
     const {email ,password} = req.body;
 
     try {
@@ -72,15 +42,24 @@ module.exports.signup_get = (req, res) => {
         res.status(200).json({user :user._id})
         
     } catch (err) {
-        const errors = handlingError(err)
+        const errors = err.message
         res.status(400).json({errors})
         
     }
 }
 
-  module.exports.logout_get = (req ,res)=>{
+  const logout = (req ,res)=>{
     res.cookie('jwt' , '' ,{maxAge : 1})
     res.redirect('/')
+
+  }
+
+  module.exports ={
+    signup,
+    login,
+    create_user,
+    login_user,
+    logout
 
   }
   

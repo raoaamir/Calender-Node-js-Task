@@ -4,11 +4,11 @@ const calenderController = require('../controllers/calenderController');
 const router = Router();
 
 router.get('/send', calenderController.send_all_events)
-router.get('/schedule',calenderController.calender_get);
-router.get('/delete/:id' , calenderController.delete_get)
-router.get('/edit/:id' , calenderController.Calender_edit)
-router.get('/createEvent' , calenderController.calender_create_get);
-router.post('/postEvent' , calenderController.calender_create_post);
-router.put('/:id',calenderController.calender_update_Put)
+router.get('/schedule',calenderController.calender);
+router.get('/delete/:id' , calenderController.delete_event)
+router.get('/edit/:id' , calenderController.calender_edit)
+router.get('/createEvent' , calenderController.calender_create);
+router.post('/postEvent' , calenderController.create_event);
+router.put('/:id',calenderController.calender_update)
 
 module.exports = router;

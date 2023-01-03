@@ -4,7 +4,6 @@
         <h2>Login</h2>
         <label for="email">Email</label>
         <input type="text" name="email" required />
-        <div class="email error"></div>
         <label for="password">Password</label>
         <input type="password" name="password" required />
         <div class="password error"></div>
@@ -13,14 +12,11 @@
 
     <script>
         const form = document.querySelector('form')
-        const emailError = document.querySelector('.email.error')
         const passwordError = document.querySelector('.password.error')
         form.addEventListener('submit', async (e) => {
             e.preventDefault()
 
             //reset errors
-
-            emailError.textContent = ''
             passwordError.textContent = ''
 
             //get the values
@@ -39,8 +35,7 @@
                 const data = await result.json()
                
                 if (data.errors) {
-                    emailError.textContent = data.errors.email
-                    passwordError.textContent = data.errors.password
+                    passwordError.textContent = data.errors
                 }
                 if (data.user) {
                     location.assign('/')

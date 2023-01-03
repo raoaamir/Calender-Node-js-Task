@@ -16,9 +16,8 @@ app.use(cookieParser())
 app.set('view engine', 'ejs');
 
 // database connection
-const dbURI ='mongodb+srv://aamir:12345@node-tut.lgbnxvi.mongodb.net/node-tut'
-mongoose.connect(dbURI ,{ useNewUrlParser : true , useUnifiedTopology : true})
-.then((result)=>app.listen(3000,()=>{
+mongoose.connect(process.env.DBURL,{ useNewUrlParser : true , useUnifiedTopology : true})
+.then(()=>app.listen(process.env.PORT,()=>{
   console.log('Server Running')
 }))
 .catch((err)=>console.log(err))
@@ -27,7 +26,6 @@ mongoose.connect(dbURI ,{ useNewUrlParser : true , useUnifiedTopology : true})
 app.get('*', checkUser)
 app.get('/', (req, res) => res.render('home'));
 app.get('/calender', requireAuth ,(req, res) => res.render('index1'));
-// app.get('/createEvent', requireAuth ,(req, res) => res.render('create'));
 app.use(authRoutes)
 app.use(calenderRoutes)
 app.use(alldayRoutes)

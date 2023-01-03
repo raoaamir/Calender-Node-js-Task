@@ -5,8 +5,7 @@ var starttime2 = 0;
 var format = 0;
 var timeform = "";
 let arr=[];
-// let newdata;
-// let alldays;
+
 
 try {
   const res = await fetch('/send');
@@ -35,10 +34,6 @@ try {
 
 
 function setAllDay(id){
-
-// for (element in daily){
-
-// }
 
   daily.forEach((element)=>{
     let allday = document.createElement("div");
@@ -173,12 +168,13 @@ for (let i = 0; i < elementArray.length; i++) {
 function settime(time) {
   time = time.toString();
   format = time.split('.');
+  console.log(format)
   if (format[0] > 12) {
     starttime2 = format[0] - 12;
     timeform = " PM-";
   }
   else {
-    starttime2 = time;
+    starttime2 = format[0];
     timeform = " AM-";
   }
   if (format[1]) {
